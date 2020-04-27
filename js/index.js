@@ -101,8 +101,12 @@ const setLikeForObj = (arr, arrLikes) => {
 
 //Remove duplicates from initial data when favourites jokes are visible in the search list
 const removeDuplicates = (data) => {
+
     let filteredData = data;
     if(state.favourites.length) {
+        state.favourites.forEach(fav => {
+            state.jokes.push(fav);
+        });
         if(Array.isArray(data)) {
             for(let fav of state.favourites) {
                 const index = data.findIndex(elem => elem.id === fav.id);
