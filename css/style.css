@@ -1,0 +1,371 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333333;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh
+}
+
+.container {
+    width: 680px;
+    margin: 0 auto;
+}
+
+.inactive {
+    display: none;
+}
+
+/*------------------*/
+/*----MAIN BLOCK----*/
+/*------------------*/
+
+
+/*-----HEADER-------*/
+
+.main {
+    width: 66%;
+    background-color: white;
+}
+
+.header {
+    margin-top: 40px;
+}
+
+.header__logo {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.header__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 44px;
+    margin-top: 78px;
+}
+
+.header__call {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 44px;
+}
+
+/*-----BUTTONS-------*/
+
+.buttons {
+    margin-top: 43px;
+}
+
+.buttons-radio-container {
+    display: block;
+    width: 150px;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    user-select: none;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+/* Hide the browser's default radio button */
+.buttons-radio__hide {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+}
+
+/* Create a custom radio button */
+.buttons-radio__button {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #ABABAB;
+    border-radius: 50%;
+}
+
+/* When the radio button is checked, add a blue background */
+.buttons-radio__hide:checked ~ .buttons-radio__button {
+    border: 2px solid #333333;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.buttons-radio__button:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.buttons-radio__hide:checked ~ .buttons-radio__button:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.buttons-radio-container .buttons-radio__button:after {
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333333;
+}
+
+.buttons-radio__label {
+    padding-left: 5px;
+}
+
+.buttons-categories {
+    display: none;
+    flex-wrap: wrap;
+    padding: 8px 10px 15px 0;
+}
+
+.buttons-categories__button {
+    padding: 6px 15px;
+    border: 2px solid #F8F8F8;
+    box-sizing: border-box;
+    border-radius: 6px;
+    outline: none;
+    color: #ABABAB;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 10px 5px 0;
+    cursor: pointer;
+}
+
+.buttons-search {
+    display: none;
+}
+
+.buttons-search__input {
+    margin: 8px 0 20px 0;
+    width: 100%;
+    outline: none;
+    height: 42px;
+    border: 2px solid #333333;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #333333;
+}
+
+.buttons-search__input::placeholder {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #ABABAB;
+}
+
+.active-flex {
+    display: flex;
+}
+
+.active-block {
+    display: block;
+}
+
+.buttons-joke {
+    padding: 10px 40px;
+    background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+
+
+/*-----JOKE-------*/
+
+.joke-wrapper {
+    margin-top: 40px;
+    margin-bottom: 120px;
+}
+
+.joke {
+    width: 100%;
+    background-color: #F8F8F8;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.joke__favourite {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    cursor: pointer;
+}
+
+.joke-container {
+    width: 540px;
+    margin: 0 40px 0 100px;
+    position: relative;
+}
+
+.joke__id {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    padding-top: 67px;
+}
+
+.joke__id-title {
+    color: #ABABAB;
+}
+
+.joke__id-number {
+    color: #8fa9fc;
+    text-decoration: underline;
+}
+
+.joke__text {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    margin-top: 5px;
+}
+
+.joke__icon {
+    position: absolute;
+    top: 67px;
+    left: -60px;
+}
+
+.joke__last-update {
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    color: #ABABAB;
+    margin-top: 28px;
+    padding-bottom: 45px;
+}
+
+.joke__categories {
+    padding: 6px 20px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: white;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+}
+
+
+/*-----------------------*/
+/*----FAVOURITE BLOCK----*/
+/*-----------------------*/
+
+.favourite {
+    width: 34%;
+    background-color: #F8F8F8;
+}
+
+.favourite__title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ABABAB;
+    margin-top: 40px;
+}
+
+.favourite-container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.favourite-wrapper {
+    margin-top: 20px;
+}
+
+.favourite-joke {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #F8F8F8;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.favourite-joke-container {
+    width: 300px;
+    margin: 0 20px 0 80px;
+    position: relative;
+}
+
+.favourite-joke__favourite {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    cursor: pointer;
+}
+
+.favourite-joke__id {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+    padding-top: 47px;
+}
+
+.favourite-joke__id-title {
+    color: #ABABAB;
+}
+
+.favourite-joke__id-number {
+    color: #8fa9fc;
+    text-decoration: underline;
+}
+
+.favourite-joke__text {
+    margin-top: 5px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.joke__icon {
+    position: absolute;
+    top: 67px;
+    left: -60px;
+}
+
+.favourite-joke__last-update {
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    color: #ABABAB;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+
+

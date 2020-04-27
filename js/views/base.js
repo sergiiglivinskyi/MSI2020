@@ -1,0 +1,18 @@
+export const elements = {
+    searchForm: document.querySelector('.search'),
+    radioButtons: document.querySelectorAll('input[name="radio"]'),
+    categoryButtons: document.querySelector('.buttons-categories'),
+    searchField: document.querySelector('.buttons-search'),
+    categories: document.querySelector('.buttons-categories'),
+    radioRandom: document.querySelector('input[value="random"]'),
+    radioCategories: document.querySelector('input[value="categories"]'),
+    radioSearch: document.querySelector('input[value="search"]'),
+    jokes: document.querySelector('.joke-wrapper'),
+    getJokeButton: document.querySelector('.buttons-joke'),
+    jokeCategories: document.querySelector('.joke__categories'),
+    searchInput: document.querySelector('.buttons-search__input'),
+    jokeWrapper: document.querySelector('.joke-wrapper'),
+    likeButton: document.querySelector('.joke__favourite'),
+    favourites: document.querySelector('.favourite-wrapper'),
+    searchFieldInput: document.querySelector('.buttons-search__input'),
+};
