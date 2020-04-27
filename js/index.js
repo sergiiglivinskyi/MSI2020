@@ -99,9 +99,31 @@ const setLikeForObj = (arr, arrLikes) => {
     }
 }
 
+//Remove duplicates from initial data when favourites jokes are visible in the search list
+const removeDuplicates = (data) => {
+    let filteredData = data;
+    if(state.favourites.length) {
+        if(Array.isArray(data)) {
+            for(let fav of state.favourites) {
+                const index = data.findIndex(elem => elem.id === fav.id);
+                filteredData.splice(index, 1);
+            }
+        }else {
+            for(let fav of state.favourites) {
+                if(data.id !== fav.id) {
+                    return data;
+                }
+            }
+        }
+    }
+    return filteredData;
+}
+
 //Render jokes into UI
 const renderUIJokes = async (data) => {
+
     if(Array.isArray(data.result)) {
+        data.result = removeDuplicates(data.result);
         setLikeForArray(data.result, state.likes);
         data.result.forEach(elem => {
             state.jokes.push(elem);
@@ -109,6 +131,7 @@ const renderUIJokes = async (data) => {
         await jokeView.renderJokes(data.result);
         console.log(data.result);
     }else {
+        data = removeDuplicates(data);
         setLikeForObj(data, state.likes);
         state.jokes.push(data);
         await jokeView.renderJoke(data);
@@ -125,6 +148,10 @@ const getJoke = async () => {
     if(elements.radioRandom.checked) {
         const randomJoke = new RandomJoke();
         const data = await randomJoke.getResults();
+        //Add favourites jokes to the TOP of the search list
+        if(state.favourites.length) {
+            await jokeView.renderJokes(state.favourites);
+        }
         renderUIJokes(data);
 
     }//Get the Joke when categories radio is selected
@@ -134,6 +161,10 @@ const getJoke = async () => {
             const randomCategoryJoke = new RandomCategoryJoke(query);
             const data = await randomCategoryJoke.getResults();
             console.log(data);
+            //Add favourites jokes to the TOP of the search list
+            if(state.favourites.length) {
+                await jokeView.renderJokes(state.favourites);
+            }
             renderUIJokes(data);
         }
 
@@ -143,6 +174,10 @@ const getJoke = async () => {
         if(query) {
             const searchJoke = new SearchJoke(query);
             const data = await searchJoke.getResults();
+            //Add favourites jokes to the TOP of the search list
+            if(state.favourites.length) {
+                await jokeView.renderJokes(state.favourites);
+            }
             renderUIJokes(data);
         }
     }
@@ -152,6 +187,12 @@ const getJoke = async () => {
 //Get a Joke button handler
 elements.getJokeButton.addEventListener('click', getJoke);
 
+document.addEventListener('keypress', function(event) {
+    console.log(event);
+    if(event.keyCode === 13 || event.which === 13) {
+        getJoke();
+    }
+});
 
 /*-----------------------
 * LIKES CLICKING HANDLER
@@ -176,6 +217,7 @@ elements.jokeWrapper.addEventListener('click', e => {
                 if(state.favourites.length) {
                     const isPresent = state.favourites.find(elem => elem.id === like.id);
                     if(!isPresent) {
+                        like.keyLike = 'liked';
                         state.favourites.push(like);
                     }
                 }else {
@@ -199,9 +241,3 @@ elements.jokeWrapper.addEventListener('click', e => {
         localStorage.setItem('favourites', JSON.stringify(state.favourites));
     }
 })
-
-
-
-
-
-
