@@ -558,6 +558,9 @@ body {
     .joke__last-update {
         padding-bottom: 10px;
     }
+    .joke__bottom {
+        padding-bottom: 20px;
+    }
 }
 
 .active-mobile {
