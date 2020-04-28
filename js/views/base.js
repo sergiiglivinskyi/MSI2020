@@ -15,4 +15,8 @@ export const elements = {
     likeButton: document.querySelector('.joke__favourite'),
     favourites: document.querySelector('.favourite-wrapper'),
     searchFieldInput: document.querySelector('.buttons-search__input'),
+    burgerButtonOpen: document.querySelector('.main__burger-button'),
+    burgerButtonClose: document.querySelector('.main__burger-button.main__burger-button--close'),
+    favourite: document.querySelector('.favourite'),
+    favouriteMobile: document.querySelector('.favourite__mobile'),
 };

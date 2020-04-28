@@ -133,13 +133,13 @@ const renderUIJokes = async (data) => {
             state.jokes.push(elem);
         });
         await jokeView.renderJokes(data.result);
-        console.log(data.result);
+        // console.log(data.result);
     }else {
         data = removeDuplicates(data);
         setLikeForObj(data, state.likes);
         state.jokes.push(data);
         await jokeView.renderJoke(data);
-        console.log(data);
+        // console.log(data);
     }
 }
 
@@ -164,7 +164,6 @@ const getJoke = async () => {
         if(query) {
             const randomCategoryJoke = new RandomCategoryJoke(query);
             const data = await randomCategoryJoke.getResults();
-            console.log(data);
             //Add favourites jokes to the TOP of the search list
             if(state.favourites.length) {
                 await jokeView.renderJokes(state.favourites);
@@ -192,7 +191,6 @@ const getJoke = async () => {
 elements.getJokeButton.addEventListener('click', getJoke);
 
 document.addEventListener('keypress', function(event) {
-    console.log(event);
     if(event.keyCode === 13 || event.which === 13) {
         getJoke();
     }
@@ -203,9 +201,9 @@ document.addEventListener('keypress', function(event) {
 * ----------------------*/
 elements.jokeWrapper.addEventListener('click', e => {
     if (e.target.matches('.joke__favourite')) {
-        console.log(e.target);
+        // console.log(e.target);
         const jokeID =  e.target.parentElement.children[1].children[1].innerText;
-        console.log(jokeID);
+        // console.log(jokeID);
         const isPresent = state.likes.find(id => id === jokeID);
         if(!isPresent){
             e.target.src = 'images/heart.svg';
@@ -239,9 +237,37 @@ elements.jokeWrapper.addEventListener('click', e => {
             e.target.src = 'images/heart_empty.svg';
         }
 
-        console.log(state);
+        // console.log(state);
         elements.favourites.innerHTML = '';
         favouritesView.renderFavouriteJokes(state.favourites);
         localStorage.setItem('favourites', JSON.stringify(state.favourites));
     }
 })
+
+/*-----------------------------------------------
+* OPEN THE FAVOURITE SECTION ON THE MOBILE VIEW
+* ----------------------------------------------*/
+
+elements.burgerButtonOpen.addEventListener('click', () => {
+    elements.favourite.classList.add('active-mobile');
+    elements.favouriteMobile.classList.add('active-mobile');
+});
+
+elements.burgerButtonOpen.addEventListener('touch', () => {
+    elements.favourite.classList.add('active-mobile');
+    elements.favouriteMobile.classList.add('active-mobile');
+});
+
+/*-----------------------------------------------
+* CLOSE THE FAVOURITE SECTION ON THE MOBILE VIEW
+* ----------------------------------------------*/
+
+elements.burgerButtonClose.addEventListener('click', () => {
+    elements.favourite.classList.remove('active-mobile');
+    elements.favouriteMobile.classList.remove('active-mobile');
+});
+
+elements.burgerButtonClose.addEventListener('touch', () => {
+    elements.favourite.classList.remove('active-mobile');
+    elements.favouriteMobile.classList.remove('active-mobile');
+});

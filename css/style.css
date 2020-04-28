@@ -27,6 +27,7 @@ body {
 .main {
     width: 66%;
     background-color: white;
+    position: relative;
 }
 
 .header {
@@ -251,13 +252,19 @@ body {
     left: -60px;
 }
 
+.joke__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    padding-bottom: 40px;
+}
+
 .joke__last-update {
     font-weight: normal;
     font-size: 10px;
     line-height: 14px;
     color: #ABABAB;
-    margin-top: 28px;
-    padding-bottom: 45px;
 }
 
 .joke__categories {
@@ -269,8 +276,6 @@ body {
     text-transform: uppercase;
     background-color: white;
     border-radius: 6px;
-    position: absolute;
-    bottom: 40px;
     right: 0;
 }
 
@@ -363,6 +368,201 @@ body {
     padding-bottom: 20px;
 }
 
+
+
+/*-------------------*/
+/*----MOBILE VIEW----*/
+/*-------------------*/
+
+
+.main__burger {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+.main__burger-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ABABAB;
+    margin-top: 40px;
+}
+
+.main__burger-button {
+    position: absolute;
+    right: 92px;
+    width: 28px;
+    height: 28px;
+    background-color: #333333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.main__burger-button:before {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}
+
+.main__burger-button:after {
+    content: '';
+    width: 14px;
+    height: 2px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    position: absolute;
+    top: 16px;
+    left: 7px;
+}
+
+.main__burger-button.main__burger-button--close:before {
+    content: '';
+    top: 13px;
+    left: 7px;
+    transform: rotateZ(45deg);
+}
+
+.main__burger-button.main__burger-button--close:after {
+    content: '';
+    top: 13px;
+    left: 7px;
+    transform: rotateZ(136deg);
+}
+
+@media (max-width: 1300px) {
+    .favourite-container {
+        width: 350px;
+    }
+    .favourite-joke-container {
+        width: 250px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .favourite-container {
+        width: 300px;
+    }
+    .favourite-joke-container {
+        width: 200px;
+    }
+    .container {
+        margin: 0 40px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .main {
+        display: block;
+        width: 100%;
+    }
+    .favourite {
+        z-index: 100;
+        display: none;
+        /*min-height: 100vh;*/
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        overflow: auto;
+    }
+    .main__burger {
+        display: block;
+    }
+    .favourite-container {
+        width: 400px;
+    }
+    .favourite-joke-container {
+        width: 300px;
+    }
+    .favourite__mobile {
+        display: none;
+        z-index: 10;
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+    }
+    .favourite__mobile-left {
+        width: 40%;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .favourite__mobile-right {
+        width: 60%;
+        background-color: #F8F8F8;
+    }
+    .favourite__title {
+        display: none;
+    }
+    .favourite-wrapper {
+        margin-top: 88px;
+    }
+}
+
+@media (max-width: 750px) {
+    .container {
+        width: 450px;
+        margin: 0 auto;
+    }
+    .joke-container {
+        width: 350px;
+        margin: 0 20px 0 80px;
+        position: relative;
+    }
+    .favourite-container {
+        width: 340px;
+    }
+    .favourite-joke-container {
+        width: 240px;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: 340px;
+        margin: 0 auto;
+    }
+    .joke-container {
+        width: 240px;
+        margin: 0 20px 0 80px;
+        position: relative;
+    }
+    .main__burger {
+        top: 20px;
+        right: 20px;
+    }
+    .header {
+        margin-top: 20px;
+    }
+    .favourite {
+        width: 100%;
+    }
+    .favourite__mobile-left {
+        width: 0;
+    }
+    .favourite__mobile-right {
+        width: 100%;
+    }
+    .joke__bottom {
+        display: block;
+    }
+    .joke__last-update {
+        padding-bottom: 10px;
+    }
+}
+
+.active-mobile {
+    display: flex;
+}
 
 
 

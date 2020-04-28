@@ -24,8 +24,10 @@ export const renderJoke = joke => {
                 </div>
                 <p class="joke__text">${joke.value}</p>
                 <img class="joke__icon" src="images/message_icon.svg" alt="">
-                <div class="joke__last-update">Last update: ${lastUpdate} hours ago</div>
-                <span class="joke__categories">${joke.categories.length ? joke.categories : 'no category'}</span>
+                <div class="joke__bottom">
+                    <div class="joke__last-update">Last update: ${lastUpdate} hours ago</div>
+                    <span class="joke__categories">${joke.categories.length ? joke.categories : 'no category'}</span>
+                </div>
             </div>
         </div>
     `;
