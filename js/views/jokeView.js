@@ -26,31 +26,13 @@ export const renderJoke = joke => {
                 <img class="joke__icon" src="images/message_icon.svg" alt="">
                 <div class="joke__bottom">
                     <div class="joke__last-update">Last update: ${lastUpdate} hours ago</div>
-                    <span class="joke__categories">${joke.categories}</span>
+                    ${joke.categories.length ? `<span class="joke__categories">${joke.categories}</span>` : ''}
                 </div>
             </div>
         </div>
     `;
-    const markupNoCategory = `
-        <div class="joke">
-            <div class="joke-container">
-                <img class="joke__favourite" src="images/${image}.svg" alt="">
-                <div class="joke__id">
-                    <span class="joke__id-title">ID:</span><span class="joke__id-number">${joke.id}</span>
-                </div>
-                <p class="joke__text">${joke.value}</p>
-                <img class="joke__icon" src="images/message_icon.svg" alt="">
-                <div class="joke__bottom">
-                    <div class="joke__last-update">Last update: ${lastUpdate} hours ago</div>
-                </div>
-            </div>
-        </div>
-    `;
-    if(joke.categories.length) {
-        elements.jokes.insertAdjacentHTML('beforeend', markup);
-    }else {
-        elements.jokes.insertAdjacentHTML('beforeend', markupNoCategory);
-    }
+
+    elements.jokes.insertAdjacentHTML('beforeend', markup);
 };
 
 export const renderJokes = (jokes) => {
